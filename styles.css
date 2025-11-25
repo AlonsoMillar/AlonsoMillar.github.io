@@ -21,14 +21,17 @@ body {
   width: 100%;
   display: flex;
   justify-content: center;
-  padding: 20px;
+  /* CORRECCIÓN: Eliminamos padding aquí para moverlo al body en móvil. */
+  padding: 0; 
 }
 
 /* Tarjeta principal */
 .card {
   background: #ffffff;
   padding: 40px;
-  width: 430px;
+  /* CORRECCIÓN: Usamos max-width para limitar en PC y 100% para ocupar el espacio disponible. */
+  max-width: 430px; 
+  width: 100%; 
   border-radius: 25px;
   box-shadow: 0 15px 30px rgba(0,0,0,0.15);
   text-align: center;
@@ -79,7 +82,7 @@ body {
 
   border: 2px solid #0099ff;
   box-shadow: 0 0 18px rgba(0, 150, 255, 0.6),
-              inset 0 0 12px rgba(255,255,255,0.15);
+               inset 0 0 12px rgba(255,255,255,0.15);
 
   transition: 0.25s;
 }
@@ -174,7 +177,10 @@ body {
 }
 
 /* ——————————————————————————————
-   📱  RESPONSIVE PARA CELULAR
+    📱  RESPONSIVE PARA CELULAR
+—————————————————————————————— */
+/* ——————————————————————————————
+    📱  RESPONSIVE PARA CELULAR
 —————————————————————————————— */
 @media (max-width: 520px) {
 
@@ -182,13 +188,33 @@ body {
     align-items: flex-start;
     padding-top: 40px;
     height: auto;
+    /* Mantenemos el padding para los márgenes */
+    padding-left: 20px; 
+    padding-right: 20px;
   }
-
+  
+  /* CAMBIOS CLAVE EN .card */
   .card {
-    width: 100%;
+    /* Forzamos el ancho máximo a ninguno */
+    max-width: none !important; 
+    /* Forzamos el ancho al 100% del espacio disponible */
+    width: 100% !important; 
+    /* Agregamos una propiedad para asegurar que no se encoja */
+    flex-shrink: 0; 
+
     padding: 28px;
     border-radius: 20px;
   }
+  
+  /* Puedes revisar si el .wrapper está causando el problema.
+     Si el problema persiste, prueba a añadir esto también: */
+  /*
+  .wrapper {
+      width: 100%;
+      padding: 0;
+      flex-shrink: 0; 
+  }
+  */
 
   .logo {
     width: 130px;
