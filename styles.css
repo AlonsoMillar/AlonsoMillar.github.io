@@ -1,0 +1,168 @@
+/* Fuente */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  background: linear-gradient(135deg, #004b7c, #006bb3, #0095ff);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* Contenedor principal */
+.wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+
+/* Tarjeta principal */
+.card {
+  background: #ffffff;
+  padding: 40px;
+  width: 430px;
+  border-radius: 25px;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+  text-align: center;
+  animation: fadeIn 1s ease forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Logo */
+.logo {
+  width: 180px;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+/* Título */
+.title {
+  font-size: 38px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.title span {
+  color: #007bff;
+}
+
+/* Texto */
+.description {
+  font-size: 16px;
+  color: #444;
+  margin-bottom: 30px;
+  line-height: 1.5;
+}
+
+.download-btn {
+  display: inline-block;
+  padding: 15px 32px;
+  background: linear-gradient(135deg, #00aaff, #0077cc);
+  color: white;
+  border-radius: 12px;
+  font-size: 18px;
+  font-weight: 700;
+  text-decoration: none;
+  letter-spacing: 0.5px;
+
+  border: 2px solid #0099ff;
+  box-shadow: 0 0 18px rgba(0, 150, 255, 0.6),
+              inset 0 0 12px rgba(255,255,255,0.15);
+
+  transition: 0.25s;
+}
+
+.download-btn:hover {
+  transform: scale(1.07);
+  background: linear-gradient(135deg, #0099ff, #005fa3);
+  box-shadow: 0 0 28px rgba(0, 150, 255, 1);
+}
+
+.download-btn:active {
+  transform: scale(0.97);
+  box-shadow: 0 0 10px rgba(0, 150, 255, 0.5);
+}
+
+
+/* Texto versión */
+.version {
+  margin-top: 20px;
+  font-size: 14px;
+  color: #666;
+}
+/* --- FONDO ANIMADO DEFINITIVO --- */
+
+.background {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  z-index: -3;
+}
+
+/* Capa principal del gradient animado */
+.background::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center,
+      rgba(0, 105, 180, 0.35),
+      rgba(0, 60, 100, 0.65) 40%,
+      rgba(0, 30, 55, 1) 100%
+    ),
+    linear-gradient(135deg, #003459, #004b7c, #006bb3);
+  background-size: 300% 300%;
+  animation: gradientFlow 12s ease-in-out infinite;
+  z-index: -3;
+}
+
+/* Partículas flotando */
+.background::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: 
+    radial-gradient(circle, rgba(255,255,255,0.10) 2px, transparent 2px),
+    radial-gradient(circle, rgba(255,255,255,0.06) 2px, transparent 2px),
+    radial-gradient(circle, rgba(255,255,255,0.10) 2px, transparent 2px);
+  background-size: 3px 3px, 4px 4px, 2px 2px;
+  background-position: 0 0, 40px 60px, 120px 180px;
+  animation: starsMove 18s linear infinite;
+  opacity: 0.3;
+  z-index: -2;
+}
+
+@keyframes starsMove {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-150px); }
+}
+
+/* LUZ suave que cruza la pantalla */
+.moving-light {
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(0,170,255,0.12), transparent 70%);
+  animation: lightFloat 18s ease-in-out infinite;
+  z-index: -1;
+  pointer-events: none;
+}
+
+@keyframes lightFloat {
+  0% { transform: translate(0,0); }
+  50% { transform: translate(10%,15%); }
+  100% { transform: translate(0,0); }
+}
